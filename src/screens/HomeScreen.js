@@ -26,6 +26,7 @@ const HomeScreen = ({navigation}) => {
                           ({item}) => {
                               return (
                                   <TouchableOpacity onPress={() =>
+                                      navigation.navigate('Detail', {data: item})
                                   }>
                                       <View style={styles.clientRow}>
                                           <Text style={styles.clientText}>{item.firstName} {item.lastName}</Text>
