@@ -1,6 +1,7 @@
 import {useState} from "react";
 import phorestApi from "../api/phorestApi";
 import moment from "moment";
+import {DATE_FORMAT} from "../constants/constants";
 
 export function useCreateVoucher(businessId, branchId, clientId) {
 
@@ -11,9 +12,9 @@ export function useCreateVoucher(businessId, branchId, clientId) {
     const createVoucher = async (amount) => {
         setLoading(true)
         const issueDate = moment().add('day')
-            .format('YYYY-MM-DDThh:mm:ss');
+            .format(DATE_FORMAT);
         const expiryDate = moment().add(2, 'months')
-            .format('YYYY-MM-DDThh:mm:ss');
+            .format(DATE_FORMAT);
         console.log(expiryDate)
         console.log("am:" + amount)
         try {
