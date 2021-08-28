@@ -1,19 +1,23 @@
 import phorestApi from "../api/phorestApi";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 export function useFetchClients(businessId) {
     const [results, setResults] = useState([])
     const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setLoading] = useState(false)
 
-    const fetchClients = async (emailValue) => {
-        console.log("fetchClients by: " + emailValue)
+    const fetchClients = async (email) => {
+        console.log("fetchClients by: " + email)
 
+        if (email === '') {
+            setErrorMessage("Please insert an email")
+            return
+        }
         try {
             setLoading(true)
             const response = await phorestApi.get('/' + businessId + '/client', {
                 params: {
-                    email: emailValue
+                    email: email
                 }
             })
             console.log(response.data)
@@ -34,10 +38,6 @@ export function useFetchClients(businessId) {
             setLoading(false)
         }
     }
-
-    useEffect(() => {
-        fetchClients('')
-    },[])
 
     return [fetchClients, results, errorMessage, isLoading]
 }
