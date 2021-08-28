@@ -1,10 +1,10 @@
-import React from "react";
+import React from "react"
 import {renderHook} from '@testing-library/react-hooks'
-import {useFetchClients} from "../../hooks/useFetchClients";
-import mockAxios from "axios";
-import {waitFor} from "@testing-library/react";
+import {useFetchClients} from "../../hooks/useFetchClients"
+import mockAxios from "axios"
+import {waitFor} from "@testing-library/react"
 import TestRenderer from 'react-test-renderer'
-const {act} = TestRenderer;
+const {act} = TestRenderer
 
 test('should show error and not loading when empty email', async () => {
     const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
@@ -30,7 +30,7 @@ test("fetches data ", async () => {
                 }
             },
         })
-    );
+    )
 
     const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
     act(() => {
@@ -47,7 +47,7 @@ test("fetches data ", async () => {
                     email: "victoriaz@gamil.com"
                 }
             }
-        );
+        )
         expect(result.current[1].length).toBe(1)//results
         expect(result.current[2]).toBe("")//errorMessage
         expect(result.current[3]).toBe(false) //isLoading
@@ -64,7 +64,7 @@ test('should show error and not loading when no results retrieved', async () => 
                 }
             },
         })
-    );
+    )
     const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
     act(() => {
         result.current[0]("victoriaz@gamil.com")
@@ -87,7 +87,7 @@ test('should show error and not loading when status is not 200', async () => {
                 }
             },
         })
-    );
+    )
     const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
     act(() => {
         result.current[0]("victoriaz@gamil.com")
