@@ -7,7 +7,7 @@ import TestRenderer from 'react-test-renderer'
 const {act} = TestRenderer
 
 test('should show error and not loading when empty email', async () => {
-    const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
+    const {result} = renderHook(() => useFetchClients("business_id"))
     act(() => {
         result.current[0]("")
     })
@@ -32,16 +32,16 @@ test("fetches data ", async () => {
         })
     )
 
-    const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
+    const {result} = renderHook(() => useFetchClients("business_id"))
     act(() => {
         result.current[0]("victoriaz@gamil.com")
     })
 
     await waitFor(() => {
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
+        expect(mockAxios.get).toHaveBeenCalledTimes(1)
 
         expect(mockAxios.get).toHaveBeenCalledWith(
-            "/eTC3QY5W3p_HmGHezKfxJw/client",
+            "/business_id/client",
             {
                 params: {
                     email: "victoriaz@gamil.com"
@@ -65,7 +65,7 @@ test('should show error and not loading when no results retrieved', async () => 
             },
         })
     )
-    const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
+    const {result} = renderHook(() => useFetchClients("business_id"))
     act(() => {
         result.current[0]("victoriaz@gamil.com")
     })
@@ -88,7 +88,7 @@ test('should show error and not loading when status is not 200', async () => {
             },
         })
     )
-    const {result} = renderHook(() => useFetchClients("eTC3QY5W3p_HmGHezKfxJw"))
+    const {result} = renderHook(() => useFetchClients("business_id"))
     act(() => {
         result.current[0]("victoriaz@gamil.com")
     })
