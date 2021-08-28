@@ -1,11 +1,11 @@
 import React from 'react'
 import {View, StyleSheet, TextInput} from "react-native"
-// import {Feather} from '@expo/vector-icons'
+import {Feather} from '@expo/vector-icons'
 
 const SearchBox = ({email, onEmailChange}) => {
 
     return <View style={styles.backgroundStyle}>
-        {/*<Feather name="search" style={styles.iconStyle}/>*/}
+        <Feather name="search" style={styles.iconStyle}/>
         <TextInput autoCorrect={false}
                    autoCapitalize="none"
                    placeholder="Email"
