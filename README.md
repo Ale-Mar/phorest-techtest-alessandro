@@ -2,7 +2,7 @@
 
 I built a very simple UI with a basic navigation that allows the user to search for clients. Tapping on a client opens a detail screen, that allows the user to create a voucher.
 After the voucher is created, a dialog is shown to confirm the voucher creation, and after user taps on 'ok' it closes the detail screen.<BR/>
-For the newtworking I used the axios library and for both the network requests, are defined in a hook (useFetchClients and useCreateVoucher). I found very convenient this approach because it allowed me to easily handle the states, and, once I understood the testing framework basis, to easily cover the logic with unit tests.
+For the networking I used the axios library and both the network requests are defined in a hook (useFetchClients and useCreateVoucher). I found very convenient this approach because it allowed me to easily handle the states, and, once I understood the testing framework basis, to easily cover the logic with unit tests.
 <BR/><BR/>
 
 #### Doubts:
