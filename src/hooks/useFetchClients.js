@@ -21,7 +21,10 @@ export function useFetchClients(businessId) {
                 }
             })
             console.log(response.data)
-            if (response.data.page.totalElements > 0) {
+            if (response.status !== 200) {
+                setResults([])
+                setErrorMessage('Something went wrong')
+            } else if (response.data.page.totalElements > 0) {
                 console.log("Clients retrieved")
                 setResults(response.data._embedded.clients)
                 setErrorMessage("")
