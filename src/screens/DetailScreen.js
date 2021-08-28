@@ -1,15 +1,16 @@
-import React, {useState} from "react";
-import {Button, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
-import Dialog from "react-native-dialog";
-import {useCreateVoucher} from "../hooks/useCreateVoucher";
-import {BRANCH_ID, BUSINESS_ID} from "../constants/constants";
-import * as Progress from 'react-native-progress';
+import React, {useState} from "react"
+import {Button, ScrollView, StyleSheet, Text, TextInput, View} from "react-native"
+import Dialog from "react-native-dialog"
+import {useCreateVoucher} from "../hooks/useCreateVoucher"
+import {BRANCH_ID, BUSINESS_ID} from "../constants/constants"
+import * as Progress from 'react-native-progress'
+import moment from "moment";
 
 const DetailScreen = ({navigation}) => {
 
     const item = navigation.getParam('data')
     const [amount, setAmount] = useState('')
-    const [createVoucher, isSuccess, errorMessage, isLoading] = useCreateVoucher(BUSINESS_ID, BRANCH_ID, item.clientId)
+    const [createVoucher, isSuccess, errorMessage, isLoading, expireDate] = useCreateVoucher(BUSINESS_ID, BRANCH_ID, item.clientId)
     return (
         <ScrollView style={styles.scrollView}>
             <Text style={styles.clientText}>Name: {item.firstName}</Text>
@@ -20,7 +21,7 @@ const DetailScreen = ({navigation}) => {
             <Text>{!isSuccess ? errorMessage : null}</Text>
             <Button title="Send a Voucher" onPress={
                 () => {
-                    createVoucher(parseFloat(amount))
+                    createVoucher(parseFloat(amount), moment())
                 }
             }/>
             {isLoading ?
@@ -40,6 +41,8 @@ const DetailScreen = ({navigation}) => {
                     <Dialog.Title>Voucher created!</Dialog.Title>
                     <Dialog.Description>
                         The voucher of {amount}€ was created it
+                        {"\n\n"}
+                        (Expiration date:{expireDate})
                     </Dialog.Description>
                     <Dialog.Button label="Ok" onPress={() => {
                         navigation.goBack()
