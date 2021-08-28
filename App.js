@@ -1,8 +1,8 @@
-import React from 'react';
-import {createAppContainer} from "react-navigation";
-import createStackNavigator from "react-native-screens/createNativeStackNavigator";
-import HomeScreen from "./src/screens/HomeScreen";
-import DetailScreen from "./src/screens/DetailScreen";
+import React from 'react'
+import {createAppContainer} from "react-navigation"
+import createStackNavigator from "react-native-screens/createNativeStackNavigator"
+import HomeScreen from "./src/screens/HomeScreen"
+import DetailScreen from "./src/screens/DetailScreen"
 
 const navigator = createStackNavigator({
     Home: HomeScreen,

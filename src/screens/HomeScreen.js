@@ -1,10 +1,10 @@
-import {Text, View, StyleSheet, Button, FlatList, TouchableOpacity} from "react-native";
-import React, {useState} from "react";
-import {useFetchClients} from "../hooks/useFetchClients";
-import SearchBox from "../components/SearchBox";
-import {withNavigation} from "react-navigation";
-import * as Progress from 'react-native-progress';
-import {BUSINESS_ID} from "../constants/constants";
+import {Text, View, StyleSheet, Button, FlatList, TouchableOpacity} from "react-native"
+import React, {useState} from "react"
+import {useFetchClients} from "../hooks/useFetchClients"
+import SearchBox from "../components/SearchBox"
+import {withNavigation} from "react-navigation"
+import * as Progress from 'react-native-progress'
+import {BUSINESS_ID} from "../constants/constants"
 
 const HomeScreen = ({navigation}) => {
     const [email, setEmail] = useState('')

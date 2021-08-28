@@ -1,5 +1,5 @@
-import phorestApi from "../api/phorestApi";
-import {useState} from "react";
+import phorestApi from "../api/phorestApi"
+import {useState} from "react"
 
 export function useFetchClients(businessId) {
     const [results, setResults] = useState([])
