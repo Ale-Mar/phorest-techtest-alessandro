@@ -12,11 +12,9 @@ export function useCreateVoucher(businessId, branchId, clientId) {
     const createVoucher = async (amount) => {
         setLoading(true)
         const issueDate = moment().add('day')
-            .format(DATE_FORMAT);
+            .format(DATE_FORMAT)
         const expiryDate = moment().add(2, 'months')
-            .format(DATE_FORMAT);
-        console.log(expiryDate)
-        console.log("am:" + amount)
+            .format(DATE_FORMAT)
         try {
 
             const data = {
@@ -28,7 +26,6 @@ export function useCreateVoucher(businessId, branchId, clientId) {
                 voucherId: "v" + issueDate
             }
             console.log(data);
-            console.log("_____")
             await phorestApi.post('/' + businessId + '/voucher', data)
                 .then((response) => {
                     console.log(response);
