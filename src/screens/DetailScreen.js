@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     amountBox: {
+        paddingStart: 5,
         height: 50,
         marginTop: 20,
         marginBottom: 20,
